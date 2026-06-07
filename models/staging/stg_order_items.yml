@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_order_items
+    description: "Sipariş satırlarının, ürün fiyatlarının ve nakliye bütçelerinin tutulduğu finansal staging tablosudur."
+    columns:
+      - name: siparis_id
+        description: "Siparişin bağlı olduğu ana sipariş numarası."
+        data_tests:
+          - not_null
+      - name: urun_id
+        description: "Satılan ürünün kimlik numarası."
+        data_tests:
+          - not_null
+      - name: urun_fiyati
+        description: "Ürünün tekil satış fiyatı."
+        data_tests:
+          - not_null

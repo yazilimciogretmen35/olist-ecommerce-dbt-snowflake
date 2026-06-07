@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: int_customer_order_history
+    description: "Müşterilerin sistemdeki alışveriş alışkanlıklarını, ilk ve son sipariş tarihlerini müşteri bazında tek satırda özetleyen ara katman tablosudur."
+    columns:
+      - name: musteri_id
+        description: "Müşterinin benzersiz kimlik numarası."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: ilk_siparis_tarihi
+        description: "Müşterinin sistemde verdiği ilk siparişin tarihi."
+
+      - name: son_siparis_tarihi
+        description: "Müşterinin sistemde verdiği en son siparişin tarihi."
+
+      - name: toplam_siparis_sayisi
+        description: "Müşterinin iptal ve iadeler dahil sistemdeki toplam sipariş adedi."
+        data_tests:
+          - not_null
+
+      - name: teslim_edilen_siparis_sayisi
+        description: "Müşterinin başarıyla tamamlanan ve teslim edilen toplam sipariş adedi."
+        data_tests:
+          - not_null

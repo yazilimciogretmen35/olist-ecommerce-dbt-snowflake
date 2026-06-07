@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_order_payments
+    description: "Siparişlerin hangi finansal kanallarla ve kaç taksitle ödendiğini gösteren staging tablosudur."
+    columns:
+      - name: siparis_id
+        description: "Ödemenin ait olduğu sipariş numarası."
+        data_tests:
+          - not_null
+      - name: odeme_tutari
+        description: "Gerçekleşen ödemenin toplam tutarı."
+        data_tests:
+          - not_null

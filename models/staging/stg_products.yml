@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: stg_products
+    description: "Ham ürün verilerinin ve lojistik boyutlarının standartlaştırıldığı staging tablosudur."
+    columns:
+      - name: urun_id
+        description: "Ürünün benzersiz metinsel kimlik numarası."
+        data_tests:
+          - not_null
+          - unique

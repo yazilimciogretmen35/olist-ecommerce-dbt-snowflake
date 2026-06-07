@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: "SCD Type 2 (sns_products) snapshot modelinden beslenen, ürünlerin lojistik boyutlarını, desilerini ve tarihsel geçerlilik süreçlerini içeren ana ürün boyut tablosudur."
+    columns:
+      - name: urun_id
+        description: "Ürünün benzersiz metinsel kimlik numarası (SCD Type 2 yapısı sebebiyle mükerrer satırlar barındırabilir)."
+        data_tests:
+          - not_null
+
+      - name: urun_kategori_adi
+        description: "Ürünün dahil olduğu kategori adı (Eksik veriler NVL ile BILINMEYEN_KATEGORI yapılmıştır)."
+        data_tests:
+          - not_null
+
+      - name: urun_agirlik_gram
+        description: "Ürünün gram cinsinden brüt ağırlığı."
+        data_tests:
+          - not_null
+
+      - name: urun_uzunluk_cm
+        description: "Ürünün santimetre cinsinden uzunluğu."
+        data_tests:
+          - not_null
+
+      - name: urun_yukseklik_cm
+        description: "Ürünün santimetre cinsinden yüksekliği."
+        data_tests:
+          - not_null
+
+      - name: urun_genislik_cm
+        description: "Ürünün santimetre cinsinden genişliği."
+        data_tests:
+          - not_null
+
+      - name: gecerlilik_baslangic_tarihi
+        description: "SCD Type 2 mantığına göre, bu ürün özelliklerinin geçerli olmaya başladığı zaman damgası (dbt_valid_from)."
+        data_tests:
+          - not_null
+
+      - name: gecerlilik_bitis_tarihi
+        description: "SCD Type 2 mantığına göre, bu ürün özelliklerinin geçerliliğini yitirdiği zaman damgası (dbt_valid_to). Satır hala güncelse NULL durur."
+
+      - name: en_guncel_kayit_mi
+        description: "Bu satırın ürünün sistemdeki en son ve en güncel hali olup olmadığını gösteren Boolean bayrak."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments: 
+                values: [true, false]
+
+      - name: urun_desisi
+        description: "Ürünün uzunluk, yükseklik ve genişliğinden hesaplanan analitik lojistik desi değeri."
+        data_tests:
+          - not_null

@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: int_order_financial_matrix
+    description: "Sipariş kalemlerini (order_items) sipariş bazında tek bir satıra indirgeyen ve finansal özet çıkaran ara katman tablosudur."
+    columns:
+      - name: siparis_id
+        description: "Siparişin benzersiz kimlik numarası."
+        data_tests:
+          - not_null
+          - unique
+      - name: toplam_urun_cirosu
+        description: "Sipariş içindeki ürünlerin toplam net fiyatı."
+        data_tests:
+          - not_null

@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: int_order_payments_summary
+    description: "Siparişlerin ödeme tiplerini, maksimum taksit sayılarını ve toplam ödeme tutarlarını sipariş bazında tek satıra indiren ara katman tablosudur."
+    columns:
+      - name: siparis_id
+        description: "Siparişin benzersiz kimlik numarası."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: toplam_odeme_adimi
+        description: "Bir siparişin kapatılması için yapılan toplam farklı ödeme veya işlem adımı sayısı."
+        data_tests:
+          - not_null
+
+      - name: maksimum_taksit_sayisi
+        description: "Müşterinin bu siparişteki ödemeler arasında çıktığı en yüksek taksit adedi."
+        data_tests:
+          - not_null
+
+      - name: kredi_karti_odeme_tutari
+        description: "Sipariş tutarının kredi kartı (CREDIT_CARD) ile ödenen toplam net kısmı."
+        data_tests:
+          - not_null
+
+      - name: kupon_odeme_tutari
+        description: "Sipariş tutarının kupon veya hediye çeki (VOUCHER) ile ödenen toplam net kısmı."
+        data_tests:
+          - not_null
+
+      - name: toplam_odenen_tutar
+        description: "Sipariş için müşteriden tahsil edilen toplam brüt ödeme tutarı."
+        data_tests:
+          - not_null

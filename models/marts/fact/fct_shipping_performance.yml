@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: fct_shipping_performance
+    description: "Siparişlerin kargoya verilme sürelerini, müşteriye gerçek teslimat sürelerini ve tahmini sürelere göre gecikme durumlarını analiz eden lojistik performans ölçüm tablosudur."
+    columns:
+      - name: siparis_id
+        description: "Siparişin benzersiz kimlik numarası."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: musteri_id
+        description: "Siparişi veren müşterinin kimlik numarası (dim_musteriler tablosuna bağlanır)."
+        data_tests:
+          - not_null
+
+      - name: kargoya_verilme_suresi
+        description: "Siparişin oluşturulması ile kargoya teslim edilmesi arasında geçen gün sayısı."
+
+      - name: gerceklesen_teslimat_suresi_gun
+        description: "Siparişin oluşturulması ile müşterinin eline ulaşması arasında geçen toplam gün sayısı."
+
+      - name: tahmini_teslimat_sapma_gun
+        description: "Gerçek teslimat tarihi ile tahmini teslimat tarihi arasındaki fark (Pozitif değer gecikmeyi, negatif değer erken teslimatı gösterir)."
+
+      - name: gecikme_durumu
+        description: "Sapma gün sayısına göre kargonun nihai teslimat başarı durumu."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments: # dbt v1.11+ sürümü için zorunlu parametre başlığı
+                values: [
+                  'Gecikme Yaşandı',
+                  'Tam Zamanında Teslim Edildi',
+                  'Erken Teslim Edildi',
+                  'Veri Eksik / Teslim Edilmedi'
+                ]

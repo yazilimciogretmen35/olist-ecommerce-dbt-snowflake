@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Müşterilerin coğrafi konumlarını, alışveriş geçmişi özetlerini ve dinamik davranış segmentlerini içeren ana müşteri boyut tablosudur."
+    columns:
+      - name: musteri_id
+        description: "Müşterinin benzersiz kimlik numarası."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: benzersiz_musteri_id
+        description: "Müşterinin sistemdeki tekil (ana) kullanıcı numarası."
+        data_tests:
+          - not_null
+
+      - name: posta_kodu_on_eki
+        description: "Müşteri adresinin posta kodu ön eki."
+
+      - name: sehir
+        description: "Müşterinin yaşadığı şehir adı."
+        data_tests:
+          - not_null
+
+      - name: eyalet
+        description: "Müşterinin bağlı olduğu eyalet/bölge kısaltması."
+        data_tests:
+          - not_null
+
+      - name: ilk_siparis_tarihi
+        description: "Müşterinin sistemde verdiği ilk siparişin tarihi."
+
+      - name: son_siparis_tarihi
+        description: "Müşterinin sistemde verdiği en son siparişin tarihi."
+
+      - name: toplam_siparis_sayisi
+        description: "Müşterinin sistemdeki toplam sipariş adedi."
+        data_tests:
+          - not_null
+
+      - name: teslim_edilen_siparis_sayisi
+        description: "Müşterinin başarıyla tamamlanan toplam sipariş adedi."
+        data_tests:
+          - not_null
+
+      - name: musteri_segmenti
+        description: "Alışveriş sıklığına göre müşterinin dahil olduğu analitik segment."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [
+                  '01. Hiç Alışveriş Yapmadı',
+                  '02. Tek Seferlik Müşteri',
+                  '03. Düzenli Müşteri',
+                  '04. Sadık / VIP Müşteri'
+                ]

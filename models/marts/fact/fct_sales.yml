@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: fct_sales
+    description: "Şirketin tüm e-ticaret satış hacmini, net cirolarını, lojistik maliyetlerini ve ödeme kırılımlarını içeren merkezi fact tablosudur."
+    columns:
+      - name: siparis_id
+        description: "Siparişin benzersiz kimlik numarası."
+        data_tests:
+          - not_null
+          - unique
+
+      - name: musteri_id
+        description: "Sipariş veren müşterinin kimlik numarası (dim_musteriler ile bağlanır)."
+        data_tests:
+          - not_null
+
+      - name: siparis_durumu
+        description: "Siparişin güncel operasyonel durumu."
+        data_tests:
+          - not_null
+
+      - name: net_urun_cirosu
+        description: "Siparişten elde edilen net ürün satış tutarı."
+        data_tests:
+          - not_null
+
+      - name: brut_siparis_tutari
+        description: "Ciro ve kargo ücretinin toplamı olan brüt tutar."
+        data_tests:
+          - not_null
+
+      - name: toplam_odenen_tutar
+        description: "Müşteriden tahsil edilen toplam nihai ödeme tutarı."
+        data_tests:
+          - not_null

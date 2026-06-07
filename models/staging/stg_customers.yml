@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Ham müşteri verilerinin temizlendiği ve standartlaştırıldığı staging tablosudur."
+    columns:
+      - name: musteri_id
+        description: "Müşterinin benzersiz metinsel kimlik numarası."
+        data_tests:
+          - not_null
+          - unique

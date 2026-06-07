@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Siparişlerin zamansal süreçlerinin ve durumlarının tarih formatlarına mühürlendiği staging tablosudur."
+    columns:
+      - name: siparis_id
+        description: "Siparişin benzersiz kimlik numarası."
+        data_tests:
+          - not_null
+          - unique
+      - name: siparis_durumu
+        description: "Siparişin güncel durumu (DELIVERED, CANCELLED vb.)."
+        data_tests:
+          - not_null

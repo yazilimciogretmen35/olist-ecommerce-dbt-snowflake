@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: olist_kaynaklari
+    description: "Kaggle üzerinden indirilen Brezilya e-ticaret (Olist) ham veri havuzudur."
+    database: db_olist   
+    schema: schema_olist      
+    tables:
+      - name: RAW_OLIST_CUSTOMERS
+        description: "Müşteri adres ve ID bilgilerini tutan ham tablo."
+      
+      - name: RAW_OLIST_PRODUCTS
+        description: "Ürün özelliklerini ve kategorilerini tutan ham tablo."
+      
+      - name: RAW_OLIST_ORDERS
+        description: "Siparişlerin zamansal süreçlerini ve durumlarını tutan ham tablo."
+      
+      - name: RAW_OLIST_ORDER_ITEMS
+        description: "Sipariş satırlarını, ürün fiyatlarını ve kargo maliyetlerini içeren ham tablo."
+      
+      - name: RAW_OLIST_ORDER_PAYMENTS
+        description: "Siparişlerin ödeme yöntemleri ve taksit sayılarını tutan ham tablo."
